@@ -2,7 +2,7 @@ Given("I am on the puppy adoption site") do
   @browser.goto 'http://puppies.herokuapp.com'
 end
 
-When("I click the view details button") do
+When("I click the first view details button") do
   @browser.button(value: 'View Details', index: 1).click
 end
 
@@ -36,4 +36,12 @@ end
 
 Then("I should see {string}") do |text|
   fail 'Browser text did not match expected value' unless @browser.text.include? text
+end
+
+When("I click the Adopt Another Puppy button") do
+  @browser.button(value: 'Adopt Another Puppy').click
+end
+
+When("I click the second View Details button") do
+  @browser.button(value: 'View Details', index: 2).click
 end
