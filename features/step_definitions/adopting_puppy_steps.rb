@@ -3,7 +3,7 @@ Given("I am on the puppy adoption site") do
 end
 
 When("I click the first view details button") do
-  @browser.button(value: 'View Details', index: 1).click
+  @browser.button(value: 'View Details', index: 0).click
 end
 
 When("I click the Adopt Me button") do
@@ -43,5 +43,17 @@ When("I click the Adopt Another Puppy button") do
 end
 
 When("I click the second View Details button") do
-  @browser.button(value: 'View Details', index: 2).click
+  @browser.button(value: 'View Details', index: 1).click
+end
+
+Then("I should see {string} as the name for line item {int}") do |dog_name, int|
+  fail 'Dog name did not match expected value' unless @browser.text.include? dog_name
+end
+
+Then("I should see {string} as the subtotal for line item {int}") do |subtotal, int|
+  fail 'Subtotal did not match expected value' unless @browser.text.include? subtotal
+end
+
+Then("I should see {string} as the cart total") do |cart_total|
+  fail 'Cart total did not match expected value' unless @browser.text.include? cart_total
 end
